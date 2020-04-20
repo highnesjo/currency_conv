@@ -1,0 +1,74 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Highlight-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Navigation-with-Button.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC</title>
+    <script>
+        function multiplyBy()
+        {
+        num1 = document.getElementById("firstNumber").value;
+        document.getElementById("result").value = num1*76.53;
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md navigation-clean-button">
+            <div class="container"><a class="navbar-brand" href="#">CurrencyConverter</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                    </ul><span class="navbar-text actions"> <a href="#" class="login" style="color:white;">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
+            </div>
+        </nav>
+    </div>
+    <div class="highlight-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">USD to INR Converter</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>USD</th>
+                                <th>INR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1">$</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="USD" aria-label="Username" aria-describedby="basic-addon1" id="firstNumber" style="text-align: center;height: 90px; font-size: 50px;">
+                                  </div></td>
+                                <td>    <div class="input-group mb-3">
+                                    <input disabled id = "result" type="text" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2" style="text-align: center;background-color: white; height: 90px; font-size: 50px;" placeholder="INR">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text" id="basic-addon2">₹</span>
+                                    </div>
+                                  </div></td>
+                            </tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <form>
+            <div class="buttons"><a class="btn btn-primary" role="button" onClick="multiplyBy()">CONVERT</a></div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
