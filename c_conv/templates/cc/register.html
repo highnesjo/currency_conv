@@ -1,0 +1,32 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="{% static 'css/reg.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: #7f53ac;background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);">
+  <div style="padding-left:35%; padding-top: 10%;">
+  <div style="display:table;height:300px;text-align:center;">
+    <div style="display:table-cell;vertical-align:middle;">
+      <div class="container">
+        <div class="jumbotron" style="background-color: white">
+      <form enctype="multipart/form-data" method="POST" action="{% url 'register' %}" >
+        <h4 style="font-family: 'Poppins', sans-serif; padding-bottom: 5%;">Register</h4>
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <button type="submit" class="btn btn-success">SignUp</button>
+      </form>
+    </div>
+    </div>
+    </div>
+    </div>  
+  </div>
+
+</body>
+</html>

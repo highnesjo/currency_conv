@@ -25,8 +25,14 @@
                 <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
-                    </ul><span class="navbar-text actions"> <a href="#" class="login" style="color:white;">Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
-            </div>
+                    </ul> 
+                    <span class="navbar-text actions"> 
+                    {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn btn-light action-button" role="button">Logout</a>
+                    {% else %}
+                    <a href="#" class="login" style="color:white;"data-toggle="modal" data-target="#staticBackdrop">Log In</a><a class="btn btn-light action-button" role="button" href="{% url 'register' %}">Sign Up</a>
+                    {% endif %}
+                    </span></div>
+                </div>
         </nav>
     </div>
     <div class="highlight-clean">
@@ -66,9 +72,48 @@
             </form>
         </div>
     </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="background-color: #9fa4c4;background-image: linear-gradient(315deg, #9fa4c4 0%, #9e768f 74%);">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'user_login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="username">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">*</span>
+                </div>
+                <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" name="password">
+              </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success" >SignIn</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+
+
 
