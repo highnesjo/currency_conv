@@ -16,6 +16,7 @@ def index(request):
 def register(request):
 
     registered = False
+    prereg = False
 
     if request.method == 'POST':
         user_form = UserForm(data=request.POST )
@@ -26,7 +27,8 @@ def register(request):
             user = user_form.save(commit=False)
 
             if User.objects.filter(email=user.email).exists():
-                print("Exixt")
+                prereg = True
+                print('Already Exists!!')
             else:
                 # Save User Form to Database
                 user = user_form.save()
@@ -59,11 +61,13 @@ def register(request):
         return render(request,'cc/register.html',
                           {'user_form':user_form,
                            'registered':registered,
-                           'username':user.username})
+                           'username':user.username,
+                           })
     else:
         return render(request,'cc/register.html',
                           {'user_form':user_form,
                            'registered':registered,
+                           
                            })
 
 def user_login(request):
@@ -91,11 +95,12 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            return HttpResponse("Invalid login details supplied.")
+            return HttpResponseRedirect(reverse('index'))
 
     else:
         #Nothing has been provided for username or password.
         return HttpResponseRedirect(reverse('index'))
+
 
 
 @login_required
