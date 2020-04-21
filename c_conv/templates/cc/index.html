@@ -13,7 +13,8 @@
         function multiplyBy()
         {
         num1 = document.getElementById("firstNumber").value;
-        document.getElementById("result").value = num1*76.53;
+        convv = num1*76.96;
+        document.getElementById("result").value = convv.toFixed(2);
         }
 
     </script>
@@ -35,6 +36,17 @@
                 </div>
         </nav>
     </div>
+    {% if messages %}
+      {% for msg in messages %}
+      <div class="alert alert-danger" role="alert" style="text-align: center;" id="msg">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{msg}}
+      </div>
+    {% endfor %}
+    {% endif %}
+
     <div class="highlight-clean">
         <div class="container">
             <div class="intro">
@@ -108,6 +120,12 @@
       </div>
     </div>
   </div>
+
+  <!-- <script>
+    setTimeout(function(){
+      $('#msg').remove();
+    },2000)
+  </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
