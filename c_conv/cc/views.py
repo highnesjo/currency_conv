@@ -68,7 +68,7 @@ def register(request):
         return render(request,'cc/register.html',
                           {'user_form':user_form,
                            'registered':registered,
-                           
+                           'prereg':prereg,
                            })
 
 def user_login(request):
