@@ -1,17 +1,8 @@
-{% load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
-  <link rel="stylesheet" href="{% static 'css/reg.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-
-<body style="background-color: #7f53ac;background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);">
-  <div style="padding-left:35%; padding-top: 10%;">
+{% extends 'cc/base.html' %}
+{% load staticfiles%}
+{% block body_block %}
+<link rel="stylesheet" href="{% static 'css/regbody.css' %}">
+  <div class="paddingdiv">
   <div style="display:table;height:300px;text-align:center;">
     <div style="display:table-cell;vertical-align:middle;">
       <div class="container">
@@ -42,6 +33,8 @@
     </div>
     </div>  
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
-</body>
-</html>
+
+  {% endblock %}

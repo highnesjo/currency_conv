@@ -1,14 +1,6 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Highlight-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Navigation-with-Button.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CC</title>
+{% extends 'cc/base.html' %}
+{% block body_block %}
+
     <script>
         function multiplyBy()
         {
@@ -18,24 +10,7 @@
         }
 
     </script>
-</head>
-<body>
-    <div>
-        <nav class="navbar navbar-dark bg-dark navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="#">CurrencyConverter</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
-                    <ul class="nav navbar-nav mr-auto">
-                    </ul> 
-                    <span class="navbar-text actions"> 
-                    {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn btn-light action-button" role="button">Logout</a>
-                    {% else %}
-                    <a href="#" class="login" style="color:white;"data-toggle="modal" data-target="#staticBackdrop">Log In</a><a class="btn btn-light action-button" role="button" href="{% url 'register' %}">Sign Up</a>
-                    {% endif %}
-                    </span></div>
-                </div>
-        </nav>
-    </div>
+
     {% if messages %}
       {% for msg in messages %}
       <div class="alert alert-danger" role="alert" style="text-align: center;" id="msg">
@@ -86,51 +61,13 @@
     </div>
 
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="background-color: #9fa4c4;background-image: linear-gradient(315deg, #9fa4c4 0%, #9e768f 74%);">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="{% url 'user_login' %}" method="POST">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                <input type="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="username">
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">*</span>
-                </div>
-                <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" name="password">
-              </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-success" >SignIn</button>
-        </form>
-        </div>
-      </div>
-    </div>
   </div>
+
 
   <!-- <script>
     setTimeout(function(){
       $('#msg').remove();
     },2000)
   </script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
-</body>
-</html>
-
-
-
+    {% endblock %}
